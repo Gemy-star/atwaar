@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %} إنشاء حساب {% endblock title %}
+
+{% block content %}
+     <div class="slider-area2" style="background-image:  url(../../../static/img/hero2.png);">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2 class="body-font">إنشاء حساب</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title body-font">إنشاء حساب </h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <form class="form-contact contact_form"  enctype="multipart/form-data" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="البريد الألكترونى">
+                                    </div>
+                                </div>
+
+                                     <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Password'" placeholder="كلمة المرور">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="first_name" id="first_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter First name'" placeholder="الأسم">
+                                    </div>
+                                </div>
+
+                                     <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="last_name" id="last_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Last Name'" placeholder="اللقب">
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="phone" id="phone" type="number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Phone'" placeholder="الهاتف">
+                                    </div>
+                                </div>
+
+                                     <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="address" id="address" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Address'" placeholder="العنوان">
+                                    </div>
+                                </div>
+                                      <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid body-font" name="picture" id="picture" type="file" onfocus="this.placeholder = ''" onblur="this.placeholder = 'upload a profile picture'" placeholder="صوره شخصيه">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn body-font" value="إنشاء" name="submit"/>
+                            </div>
+                        </form>
+                    </div>
+                    {% if messages %}
+                    <div class="row">
+                         <div class="col-sm-6 md-12">
+                            {% for message in messages %}
+                                <div class="alert alert-light"><p>{{ message }}</p></div>
+                             {% endfor %}
+                         </div>
+                    </div>
+                    {% endif %}
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <span class="fa fa-map"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3 class="aida-font">جده </h3>
+                                <p class="aida-font">السعوديه</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="fa fa-mobile"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3 class="aida-font">+966 54 985 8385</h3>
+                                <p class="aida-font">طوال أيام الأسبوع</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="fa fa-envelope"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3 class="aida-font">info@bauhaus.com</h3>
+                                <p class="aida-font">راسنا فى أى وقت</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock content %}

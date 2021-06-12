@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ request.user.first_name }} الملف الشخصى {% endblock title %}
+
+{% block content %}
+ <div class="slider-area2" style="background-image: url(../../../static/img/hero2.png);">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2 class="aida-font">{{ request.user.first_name }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="about-area section-padding2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-30">
+                            <div class="team-img">
+                                <img src="{{ request.user.profile_pic.url }}" alt="{{ request.user.first_name }}">
+                            </div>
+                    </div>
+                <div class="row">
+                      <aside class="single_sidebar_widget post_category_widget">
+                                                  <div class="single-team mb-30">
+                           <div class="team-caption">
+                                <h3>{{ request.user.first_name }}</h3>
+                                {% if request.user.user_type ==  2  %}
+                                <span class="aida-font">مهندس</span>
+                                    <span class="aida-font"> {{ request.user.phone }}</span>
+                                    <span class="aida-font"> {{ request.user.address }}</span>
+                                     <span class="aida-font"> {{ request.user.email }}</span>
+                                     <span class="aida-font"> {{ request.user.national_id }}</span>
+
+                                {% endif %}
+                             {% if request.user.user_type ==  1  %}
+                                <span class="aida-font">مدير الموقع</span>
+                                 <span class="aida-font"> {{ request.user.phone }}</span>
+                                 <span class="aida-font"> {{ request.user.address }}</span>
+                                 <span class="aida-font"> {{request.user.email }}</span>
+                                 <span class="aida-font"> {{ request.user.national_id }}</span>
+
+                             {% endif %}
+                             {% if request.user.user_type ==  3  %}
+                                <span>عميل</span>
+                                 <span class="aida-font"><span class="fa fa-phone"></span> {{ request.user.phone }}</span>
+                                 <span class="aida-font"><span class="fa fa-building"></span> {{ request.user.address }}</span>
+                                 <span class="aida-font"> <span class="fa fa-info"></span> {{ request.user.email }}</span>
+                                 <span class="aida-font"> <span class="fa fa-edit"></span> {{request.user.national_id }}</span>
+                             {% endif %}
+                             {% if request.user.user_type ==  4  %}
+                                <span class="aida-font">مهندس غير معتمد</span>
+                                 <span class="aida-font"><span class="fa fa-phone"></span> {{ request.user.phone }}</span>
+                                 <span class="aida-font"><span class="fa fa-building"></span> {{ request.user.address }}</span>
+                                 <span class="aida-font"> <span class="fa fa-info"></span> {{ request.user.email }}</span>
+                                 <span class="aida-font"> <span class="fa fa-edit"></span> {{request.user.national_id }}</span>
+                             {% endif %}
+                                          </div>
+                                                  </div>
+                        </aside>
+                </div>
+                </div>
+                <div class="contact-info">
+                    <h3 class="body-font"> المراسلات</h3>
+                    <hr>
+                    {% if request.user.user_type ==  3%}
+                    <a class="btn body-font" href="{% url 'reply-list' request.user.pk %}"> إظهار</a>
+                    {% endif %}
+                    {% if request.user.user_type ==  2 or request.user.user_type ==   4 or request.user.user_type ==   1 %}
+                    <a class="btn body-font" href="{% url 'contact-engineer-list' request.user.pk %}"> إظهار</a>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+        </section>
+
+{% endblock content %}
